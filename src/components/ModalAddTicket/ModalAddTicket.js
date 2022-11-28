@@ -35,30 +35,6 @@ export default function ModalAddTache({ handleSave }) {
     //function
     const handleSaveLocal = () => {
         alert('test');
-        // const modelTask = {
-        //     titre,
-        //     debut,
-        //     fin,
-        //     PrioriteId,
-        //     description,
-        //     output,
-        //     estAlerteur,
-        // }
-        // if (titre === null || description === null || output === null) {
-        //     Swal.fire({
-        //         toast: true,
-        //         title: 'Veuiller remplir tout les champs!',
-        //         timer: 1000,
-        //         icon: 'warning',
-        //     })
-        // }
-        // else {
-        //     handleSave(modelTask);
-        //     settitre(null); setoutput(null); setdescription(null);
-        //     play();
-        //     setShow(false);
-        // }
-
     }
 
 
