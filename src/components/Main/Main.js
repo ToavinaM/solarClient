@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap';
 
 
-import Navbar from '../Nav/Navbar';
+import MyNavbar from '../Nav/MyNavbar';
 //redux
 import { BeatLoader, FadeLoader } from 'react-spinners';
 //service
@@ -34,45 +34,38 @@ const tickets = [
         createdAt: moment(),
         idUsers: 1,
         description: 'descriptionTest2',
+    },
+    {
+        id: 2,
+        idMother: null,
+        code: 'TKx023',
+        status: false,
+        createdAt: moment(),
+        idUsers: 1,
+        description: 'descriptionTest2',
     }
 ]
 export default function Projet() {
     const [ticket, setticket] = useState(tickets);
-
-    // let initiation = localStorage.getItem('users');
-    const [statut, setstatut] = useState('');
-    const [priority, setpriority] = useState('');
-    // console.log('statut=--------==', priority);
-    //task formater
-    const [todo, settodo] = useState(null);
-    const [inProgress, setinProgress] = useState(null);
-    const [doing, setdoing] = useState(null);
-    const [retard, setretard] = useState([]);
-
-    /////////nombre stat\
-    const [nombreTodo, setnombreTodo] = useState(0);
-    const [nombreProgress, setnombreProrgess] = useState(0);
-    const [nombreDoing, setnombreDoing] = useState(0);
-    ////////////drag
-    const [overTodo, setoverTodo] = useState(false);
-    const [overProgress, setoverProgress] = useState(false);
-    const [overDoing, setoverDoing] = useState(false);
 
     return (
         <Row className='container-fluid'>
 
             <Col md={12} className={'container'}>
                 <Row>
-                    <Navbar></Navbar>
+                    <MyNavbar></MyNavbar>
                 </Row>
                 <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
                 <Row>
-                    <div className='bodyContainer'>
+                    <div className='buttonAddTicket'>
                         <ModalAddTicket></ModalAddTicket>
                     </div>
                 </Row>
                 <Row>
-                    <div className='all'>
+                    <div className='boxTicket'>
                         {
                             tickets.map(ticket => {
                                 return (
