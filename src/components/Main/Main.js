@@ -10,43 +10,26 @@ import { BeatLoader, FadeLoader } from 'react-spinners';
 import moment from 'moment/moment';
 import ModalAddTicket from '../ModalAddTicket/ModalAddTicket';
 import Ticket from '../Ticket/Ticket';
-
+//service
+import serviceTicket from '../Ticket/service';
 
 import Swal from 'sweetalert2';
 
 
-const tickets = [
-    {
-        title: 'testTitle',
-        id: 1,
-        idMother: null,
-        code: 'TKx022',
-        status: false,
-        createdAt: moment(),
-        idUsers: 1,
-        description: 'descriptionTest',
-    },
-    {
-        id: 2,
-        idMother: null,
-        code: 'TKx023',
-        status: false,
-        createdAt: moment(),
-        idUsers: 1,
-        description: 'descriptionTest2',
-    },
-    {
-        id: 2,
-        idMother: null,
-        code: 'TKx023',
-        status: false,
-        createdAt: moment(),
-        idUsers: 1,
-        description: 'descriptionTest2',
-    }
-]
 export default function Projet() {
-    const [ticket, setticket] = useState(tickets);
+    const [tickets, setticket] = useState([]);
+
+    useEffect(() => {
+        serviceTicket.getTicket()
+            .then(rep => {
+                setticket(rep.data);
+                console.log(rep.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [])
+
 
     return (
         <Row className='container-fluid'>

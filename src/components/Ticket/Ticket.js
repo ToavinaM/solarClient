@@ -36,7 +36,6 @@ export default function CardTask({ ticket, handleUpdate }) {
                             <p>{ticket.description}</p>
                         </Col>
                         <Col>
-
                             <Row>
                                 <Col className='mb-2' sm={2}>
                                     {/* //reply */}
