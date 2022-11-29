@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button, Modal, Form, OverlayTrigger, Tooltip, FloatingLabel } from 'react-bootstrap';
 
 export default function UpdateCard({ handleUpdate, ticket }) {
-  // console.log('RRRRRRRRRRRr', retard);
+  // // console.log('RRRRRRRRRRRr', retard);
   //modal
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);

@@ -3,13 +3,11 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 import Swal from 'sweetalert2';
 
-export default function DeleteTicket({ ticket, getTicketReply }) {
+export default function ReplyButton({ ticket, getTicketReply }) {
 
-
-    const handleDeleteL = () => {
+    function getL(ticket) {
         getTicketReply(ticket);
     }
-
     return (
         <div>
             <OverlayTrigger
@@ -21,7 +19,7 @@ export default function DeleteTicket({ ticket, getTicketReply }) {
                     </Tooltip>
                 }
             >
-                <img onClick={handleDeleteL} className='logos' src='../reply.png' />
+                <img onClick={() => getL(ticket)} className='logos' src='../reply.png' />
             </OverlayTrigger>
         </div>
     )

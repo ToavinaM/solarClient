@@ -6,7 +6,6 @@ import { serialize } from 'object-to-formdata';
 
 export const Service = {
     getTicket: (where) => {
-        console.log('asdasdasdasdasdasdasd', where);
         return axios.get(backUrl + `/ticket?where=${JSON.stringify(where)}`,);
     },
 
@@ -18,7 +17,7 @@ export const Service = {
         return axios.post(backUrl + `/ticket`, formData);
     },
     deleteTicket: (data) => {
-        console.log('in service', data);
+        // console.log('in service', data);
         return axios.delete(backUrl + `/ticket/${data.code}`);
     },
     getDataToReply: (data) => {

@@ -3,12 +3,10 @@
     height: auto;
     background-color: white;
     border-color: rgb(228, 225, 225);
-    /* box-shadow: 4px 6px 17px 0px rgb(146, 144, 144); */
-    /* border-radius: 5px; */
+    border-radius: 40px 0px 40px 0px;
     margin: auto;
     margin-top: 23px;
     padding: 15px;
-    /* border: dotted 2px; */
     box-shadow: 5px 8px 20px 3px #d8d8d8;
     display: block;
 }
@@ -20,8 +18,13 @@
     cursor: pointer;
 }
 
+b,
+.desc {
+    font-size: 10px;
+}
+
 .logos {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     margin: 5px;
 }

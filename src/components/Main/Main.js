@@ -23,25 +23,23 @@ export default function Projet() {
     let { state } = useLocation();
     // const [user, setuser] = useState(state.user);
     const [tickets, setticket] = useState([]);
-    const [toReply, setToReply] = useState(null);
+    const [toReply, setToReply] = useState([]);
     //data
-    const [replyTickets, setreplyTickets] = useState([]);
     //fetch
     useEffect(() => {
 
         let where = state.user.roles.id === 1 ? { idUsers: state.user.id } : [];
-        console.log(where);
         serviceTicket.getTicket(where)
             .then(rep => {
                 setticket(rep.data);
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
             })
 
     }, [])
     //function
-    console.log('rep.data', tickets);
+    // console.log('rep.data', tickets[0]);
 
     function handleSave({ data, files }) {
 
@@ -50,7 +48,7 @@ export default function Projet() {
                 setticket([...tickets, rep.data])
             })
             .catch(err => {
-                console.log('some erro', err);
+                // console.log('some erro', err);
             })
     }
 
@@ -58,21 +56,21 @@ export default function Projet() {
         // alert('active')
         ServiceTicket.deleteTicket(data)
             .then(rep => {
-                console.log('to delete', rep);
+                // console.log('to delete', rep);
                 setticket(tickets.filter(t => t.code !== data.code));
             })
             .catch(err => {
-                console.log('some error delete', err);
+                // console.log('some error delete', err);
             })
     }
 
     function getTicketReply(ticketToreply) {
         // alert('reply');
-        console.log(ticketToreply);
+        // console.log(ticketToreply);
         setToReply(ticketToreply);
         // Service.getDataToReply(ticketToreply).then(rep => {
         // }).catch(err => {
-        //     console.log('some error in getReply', err);
+        //     // console.log('some error in getReply', err);
         // })
     }
     return (
@@ -107,7 +105,10 @@ export default function Projet() {
                 </Row>
             </Col >
             <Col md={4}>
-                <BoxReply toReply={toReply}></BoxReply>
+                {
+                    tickets.length > 0 &&
+                    <BoxReply toReply={tickets[0]}></BoxReply>
+                }
             </Col>
         </Row >
     )

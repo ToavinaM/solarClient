@@ -14,48 +14,13 @@
  .ticket .title {
      height: 60px;
      border-bottom: 1px solid #ececec;
-
-
- }
-
- .myReply,
- .hisReply {
-
-     padding: 10px 0;
- }
-
- .myReply {
-     text-align: end;
- }
-
- .myReply .contents {
-     background-color: #dedede;
-     border-radius: 0px 10px 0px 10px;
  }
 
 
- .hisReply {
-     text-align: left;
- }
 
- .hisReply .contents {
-     background-color: #c5cfd8;
-     border-radius: 10px 0px 10px 0px;
- }
 
- .contents,
- .file {
-     display: inline-block;
-     width: 60%;
-     text-align: left;
-     padding-inline: 1rem;
-     margin-bottom: 1rem;
- }
 
- .contents .text {
-     font-size: 13px;
-     padding-block: .5rem;
- }
+
 
  .contents .titles {
      padding-block: .5rem;
@@ -63,27 +28,9 @@
 
  }
 
- .contents .userName {
-     font-size: 13px;
- }
 
- .contents .date {
-     color: grey;
-     font-size: 13px;
-     text-align: end;
- }
 
- .icon {
-     background-color: #dedede;
-     height: 30px;
-     width: 30px;
-     display: inline-block;
-     border-radius: 7px;
- }
 
- .file {
-     font-size: 13px;
- }
 
  .hisReply .icon {
      background-color: #c5cfd8;
@@ -152,18 +99,7 @@
      border-left: 55px solid transparent;
      border-right: 55px solid transparent;
 
-     /* background-color: rgb(255, 255, 255); */
-     /* background-color: rgb(249, 0, 0);
-            border-radius: 0px 0px 0px 33%/113px;
-            border-radius: 5% 0px 0 34%/86px;
-            position: absolute;
-            top:0;
-            left:80%;
-            width:120px;
-            height:100%;
-            border-left:3px dashed #c6c6c6;
-            opacity: 0;
-            transition: 0.6s; */
+
  }
 
  .ticketss:hover .corner {

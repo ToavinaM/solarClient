@@ -25,14 +25,12 @@ export default function ModalAddTache({ handleSave, user }) {
                 "id": user.id //this is yet static
             }
         }
-        console.log('debug', data);
+        // console.log('debug', data);
         let formdata = new FormData();
         formdata.set('fileSolar', files);
         handleSave({ data, files });
         handleClose();
     }
-
-
     return (
         <>
             <OverlayTrigger
@@ -40,7 +38,7 @@ export default function ModalAddTache({ handleSave, user }) {
                 placement='top'
                 overlay={
                     <Tooltip id={`tooltip-end`}>
-                        <strong>Ajout Tache</strong>.
+                        <strong>Add Ticket</strong>.
                     </Tooltip>
                 }
             >

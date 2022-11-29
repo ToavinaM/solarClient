@@ -1,13 +1,13 @@
 import React from 'react';
 import './style.css';
-import { Col, Row } from 'react-bootstrap';
+import { Badge, Col, Row } from 'react-bootstrap';
 // animation
 import { fadeInDown } from 'react-animations'
 import Radium, { StyleRoot } from 'radium';
 //modalupdate
 import UpdateCard from './ButtonModal/UpdateCard';
 import DeleteTicket from './ButtonModal/DeleteTicket';
-import Reply from './ButtonModal/Reply';
+import ReplyButton from './ButtonModal/ReplyButton';
 
 var moment = require('moment');
 const formatDate = "DD/MM/YYYY HH:mm";
@@ -18,8 +18,8 @@ const styles = { fadeInDown: { animation: 'x 2s', animationName: Radium.keyframe
 export default function Ticket({ ticket, handleUpdate, handleDelete, getTicketReply }) {
     return (
         <StyleRoot>
-            <div style={styles.fadeInDown} onClick={() => alert('asd')}>
-                <div style={{ borderTop: `#79bf3e solid 8px` }} className='card'>
+            <div style={styles.fadeInDown} >
+                <div className='card'>
                     <Row >
                         <Col>
                             <h5>{ticket.title}</h5>
@@ -27,15 +27,16 @@ export default function Ticket({ ticket, handleUpdate, handleDelete, getTicketRe
                         <Col sm={2} style={{ display: 'contents' }}>
                             <UpdateCard handleUpdate={handleUpdate} ticket={ticket} />
                             <DeleteTicket handleUpdate={handleUpdate} handleDelete={handleDelete} ticket={ticket} />
-                            <Reply getTicketReply={getTicketReply} handleUpdate={handleUpdate} handleDelete={handleDelete} ticket={ticket} />
+                            <ReplyButton getTicketReply={getTicketReply} ticket={ticket} />
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <label>Created At:{moment(ticket.createdAt).format(formatDate)}</label>
-                            <p>{moment(ticket.createdAt).format(formatDate)}</p>
-                            <label>Description</label>
-                            <p>{ticket.description}</p>
+                            <b className='date'>Status : <Badge>open</Badge></b><br></br>
+                            <b className='date'>Created At : {moment(ticket.createdAt).format(formatDate)}</b>
+                            <br></br>
+                            <b>Description : {ticket.description}</b>
+                            {/* <p className='desc'>{ticket.description}</p> */}
                         </Col>
 
                     </Row>
