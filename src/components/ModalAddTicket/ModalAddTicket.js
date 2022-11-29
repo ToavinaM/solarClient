@@ -35,7 +35,6 @@ export default function ModalAddTache({ handleSave }) {
 
     return (
         <>
-
             <OverlayTrigger
                 key='top'
                 placement='top'

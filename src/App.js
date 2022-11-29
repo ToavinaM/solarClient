@@ -17,8 +17,8 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<BoxReply />} />
-          {/* <Route path="/" element={<Signin />} /> */}
+          {/* <Route path="/" element={<BoxReply />} /> */}
+          <Route path="/" element={<Signin />} />
           <Route path="/Main" element={<Main />} />
           {/* <Route path="/" element={<Upload />} /> */}
         </Routes>

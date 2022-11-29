@@ -1,15 +1,20 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
+import { Badge, Col, Row } from 'react-bootstrap'
 import './styles.css'
-export default function BoxReply() {
+export default function BoxReply({ toReply }) {
     return (
-        <Col md={4}>
+        <Col md={12}>
             <h1>kjh</h1>
             <div className="ticket px-4" >
                 <Row>
                     <div className="d-flex align-items-center title " style={{ color: "#8f8f8f" }}>
-                        <Col md={6}><h5>Ticket Name</h5></Col>
-                        <Col md={6} className=" text-end p-0"><b>status</b></Col>
+                        {/* <Col md={6}><h5>{toReply.title}</h5></Col> */}
+                        <Col md={6}><h5>Titre test</h5></Col>
+                        <Col md={6} className=" text-end p-0">
+                            {/* <b>{toReply.status}</b> */}
+                            <Badge>Open</Badge>
+                        </Col>
+                        {/* <Col md={6} className=" text-end p-0"><b>status</b></Col> */}
                     </div>
                 </Row>
                 <Row className="detail">

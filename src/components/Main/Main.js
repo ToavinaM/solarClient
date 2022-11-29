@@ -5,7 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import MyNavbar from '../Nav/MyNavbar';
 // import { BeatLoader, FadeLoader } from 'react-spinners';
 //service
-import ServiceTicket from '../Ticket/service';
+import ServiceTicket, { Service } from '../Ticket/service';
 
 // import moment from 'moment/moment';
 import ModalAddTicket from '../ModalAddTicket/ModalAddTicket';
@@ -13,18 +13,22 @@ import Ticket from '../Ticket/Ticket';
 //service
 import serviceTicket from '../Ticket/service';
 
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
+import BoxReply from '../Ticket2/BoxReply';
+// import Ticket2 from '../Ticket2/Ticket2';
 
 
 export default function Projet() {
     // state
     const [tickets, setticket] = useState([]);
+    const [toReply, setToReply] = useState(null);
+    //data
+    const [replyTickets, setreplyTickets] = useState([]);
     //fetch
     useEffect(() => {
         serviceTicket.getTicket()
             .then(rep => {
                 setticket(rep.data);
-                // console.log(rep.data);
             })
             .catch(err => {
                 console.log(err);
@@ -55,10 +59,17 @@ export default function Projet() {
             })
     }
 
+    function getTicketReply(ticketToreply) {
+        Service.getDataToReply(ticketToreply).then(rep => {
+            setToReply(ticketToreply);
+        }).catch(err => {
+            console.log('some error in getReply', err);
+        })
+    }
     return (
         <Row className='container-fluid'>
 
-            <Col md={12} className={'container'}>
+            <Col md={8} className={'container'}>
                 <Row>
                     <MyNavbar></MyNavbar>
                 </Row>
@@ -72,16 +83,25 @@ export default function Projet() {
                     </div>
                 </Row>
                 <Row>
-                    <div className='boxTicket'>
-                        {
-                            tickets.map(ticket => {
-                                return (
-                                    <Ticket ticket={ticket} handleDelete={handleDelete}></Ticket>
-                                )
-                            })
-                        }
+                    <div className='boxTicket   ' >
+                        <Col md={12} >
+                            <Row className=" d-flex justify-content-center">
+                                {/* <Ticket2></Ticket2> */}
+                                {
+                                    tickets.map(ticket => {
+                                        return (
+                                            <Ticket getTicketReply={getTicketReply} ticket={ticket} handleDelete={handleDelete}></Ticket>
+                                        )
+                                    })
+                                }
+                            </Row>
+
+                        </Col>
                     </div>
                 </Row>
+            </Col >
+            <Col md={4}>
+                <BoxReply toReply={toReply}></BoxReply>
             </Col>
         </Row >
     )

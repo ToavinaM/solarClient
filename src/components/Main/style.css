@@ -5,6 +5,7 @@
 .boxTicket {
     /* overflow: show; */
     /* over */
+    display: contents;
 }
 
 h3 {

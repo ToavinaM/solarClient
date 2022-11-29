@@ -15,6 +15,9 @@ export const Service = {
         console.log('in service', data);
         return axios.delete(backUrl + `/ticket/${data.code}`);
     },
+    getDataToReply: (data) => {
+        return axios.get(backUrl + `/ticket/${data.code}`);
+    }
 }
 
 export default Service;

@@ -2,22 +2,23 @@ import React from 'react';
 import './style.css';
 import { Col, Row } from 'react-bootstrap';
 // animation
-import { flipInX } from 'react-animations'
+import { fadeInDown } from 'react-animations'
 import Radium, { StyleRoot } from 'radium';
 //modalupdate
 import UpdateCard from './ButtonModal/UpdateCard';
 import DeleteTicket from './ButtonModal/DeleteTicket';
+import Reply from './ButtonModal/Reply';
 
 var moment = require('moment');
 const formatDate = "DD/MM/YYYY HH:mm";
 
-const styles = { flipInX: { animation: 'x 1s', animationName: Radium.keyframes(flipInX, '') } }
+const styles = { fadeInDown: { animation: 'x 2s', animationName: Radium.keyframes(fadeInDown, '') } }
 /////////////////////////////////////////////////////////color banier border 
 
-export default function CardTask({ ticket, handleUpdate, handleDelete }) {
+export default function Ticket({ ticket, handleUpdate, handleDelete, getTicketReply }) {
     return (
         <StyleRoot>
-            <div style={styles.flipInX}  >
+            <div style={styles.fadeInDown} onClick={() => alert('asd')}>
                 <div style={{ borderTop: `#79bf3e solid 8px` }} className='card'>
                     <Row >
                         <Col>
@@ -26,6 +27,7 @@ export default function CardTask({ ticket, handleUpdate, handleDelete }) {
                         <Col sm={2} style={{ display: 'contents' }}>
                             <UpdateCard handleUpdate={handleUpdate} ticket={ticket} />
                             <DeleteTicket handleUpdate={handleUpdate} handleDelete={handleDelete} ticket={ticket} />
+                            <Reply getTicketReply={getTicketReply} handleUpdate={handleUpdate} handleDelete={handleDelete} ticket={ticket} />
                         </Col>
                     </Row>
                     <Row>

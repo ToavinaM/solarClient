@@ -1,5 +1,5 @@
 .card {
-    width: 80%;
+    width: 50%;
     height: auto;
     background-color: white;
     border-color: rgb(228, 225, 225);
@@ -8,11 +8,13 @@
     margin: auto;
     margin-top: 23px;
     padding: 15px;
+    border: dotted 2px;
+    box-shadow: 5px 8px 20px 3px #d8d8d8;
 }
 
 .card:hover {
     transform: scale(0.99, 0.99);
-    box-shadow: 5px 8px 20px 3px #5f5d5d;
+    box-shadow: 5px 8px 20px 3px #949393;
     transition-duration: 0.3s;
     cursor: pointer;
 }
