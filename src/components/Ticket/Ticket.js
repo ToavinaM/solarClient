@@ -14,7 +14,7 @@ const formatDate = "DD/MM/YYYY HH:mm";
 const styles = { flipInX: { animation: 'x 1s', animationName: Radium.keyframes(flipInX, '') } }
 /////////////////////////////////////////////////////////color banier border 
 
-export default function CardTask({ ticket, handleUpdate }) {
+export default function CardTask({ ticket, handleUpdate, handleDelete }) {
     return (
         <StyleRoot>
             <div style={styles.flipInX}  >
@@ -25,7 +25,7 @@ export default function CardTask({ ticket, handleUpdate }) {
                         </Col>
                         <Col sm={2} style={{ display: 'contents' }}>
                             <UpdateCard handleUpdate={handleUpdate} ticket={ticket} />
-                            <DeleteTicket handleUpdate={handleUpdate} ticket={ticket} />
+                            <DeleteTicket handleUpdate={handleUpdate} handleDelete={handleDelete} ticket={ticket} />
                         </Col>
                     </Row>
                     <Row>

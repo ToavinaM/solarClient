@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Col, Modal, Row, Form, FloatingLabel, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
-import ServiceTicket from '../Ticket/service';
-
 import './style.css';
 //date
 // import DatePicker from 'react-date-picker'
@@ -10,13 +8,6 @@ import Swal from 'sweetalert2';
 import useSound from 'use-sound';
 import Upload from '../Upload/Upload';
 // import create from '../sound/create.mp3';
-const options = [
-    { id: 1, name: "Bas" },
-    { id: 2, name: "Moyen" },
-    { id: 3, name: "Urgent" },
-];
-
-
 export default function ModalAddTache({ handleSave }) {
     //sound
     // const [play] = useSound(create, { volume: 1 });
@@ -37,14 +28,8 @@ export default function ModalAddTache({ handleSave }) {
                 "id": 2 //this is yet static
             }
         }
-        console.log(data);
-        ServiceTicket.saveTicket(data)
-            .then(rep => {
-                console.log('ticket save', rep);
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        handleSave(data);
+        handleClose();
     }
 
 

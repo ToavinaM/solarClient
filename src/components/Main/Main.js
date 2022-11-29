@@ -17,8 +17,9 @@ import Swal from 'sweetalert2';
 
 
 export default function Projet() {
+    // state
     const [tickets, setticket] = useState([]);
-
+    //fetch
     useEffect(() => {
         serviceTicket.getTicket()
             .then(rep => {
@@ -31,17 +32,27 @@ export default function Projet() {
     }, [])
     //function
     console.log('rep.data', tickets);
+
     function handleSave(data) {
         ServiceTicket.saveTicket(data)
             .then(rep => {
-                console.log('new', rep);
-                console.log('old', tickets);
-                // setticket([...tickets, rep])
+                setticket([...tickets, rep.data])
             })
             .catch(err => {
-                console.log(err);
+                console.log('some erro', err);
             })
+    }
 
+    function handleDelete(data) {
+        // alert('active')
+        ServiceTicket.deleteTicket(data)
+            .then(rep => {
+                console.log('to delete', rep);
+                setticket(tickets.filter(t => t.code !== data.code));
+            })
+            .catch(err => {
+                console.log('some error delete', err);
+            })
     }
 
     return (
@@ -57,7 +68,7 @@ export default function Projet() {
                 <br></br>
                 <Row>
                     <div className='buttonAddTicket'>
-                        <ModalAddTicket handleSave={handleSave}></ModalAddTicket>
+                        <ModalAddTicket handleSave={handleSave} ></ModalAddTicket>
                     </div>
                 </Row>
                 <Row>
@@ -65,7 +76,7 @@ export default function Projet() {
                         {
                             tickets.map(ticket => {
                                 return (
-                                    <Ticket ticket={ticket}></Ticket>
+                                    <Ticket ticket={ticket} handleDelete={handleDelete}></Ticket>
                                 )
                             })
                         }

@@ -9,7 +9,7 @@ export default function DeleteTicket({ ticket, handleDelete }) {
   const handleDeleteL = () => {
     Swal.fire({
       toast: true,
-      timer: 4000,
+      // timer: 4000,
       timerProgressBar: true,
       title: 'Confirm?',
       icon: 'warning',
@@ -26,9 +26,9 @@ export default function DeleteTicket({ ticket, handleDelete }) {
           icon: 'success',
         }
         ).then(() => {
-          alert('deleted')
         })
       }
+      handleDelete(ticket)
     })
   }
 

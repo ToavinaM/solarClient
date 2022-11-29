@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 // import { BsPlusCircle } from "react-icons/bs";
 import { Button, Modal, Form, OverlayTrigger, Tooltip, FloatingLabel } from 'react-bootstrap';
 
-export default function UpdateCard({ handleUpdate, tache, retard }) {
+export default function UpdateCard({ handleUpdate, ticket }) {
   // console.log('RRRRRRRRRRRr', retard);
   //modal
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   //formulaire
-  const [titre, settitre] = useState(null);
+  const [title, settitle] = useState(ticket.title);
+  const [description, setdescription] = useState(ticket.description);
 
   const handleSaveLocal = () => {
     alert('test');
+    handleUpdate();
   }
 
   return (
@@ -42,12 +44,12 @@ export default function UpdateCard({ handleUpdate, tache, retard }) {
                 controlId="exampleForm.ControlTextarea1"
               >
                 <Form.Label >Title *</Form.Label>
-                <Form.Control required rows={3} />
+                <Form.Control required rows={3} defaultValue={title} />
               </Form.Group>
             </Form.Group>
 
-            <FloatingLabel controlId="floatingTextarea2" label="Déscription*">
-              <Form.Control as="textarea" placeholder="Leave a comment here" style={{ height: '100px' }} />
+            <FloatingLabel controlId="floatingTextarea2" label="Description*">
+              <Form.Control as="textarea" placeholder="Leave a comment here" defaultValue={description} style={{ height: '100px' }} />
             </FloatingLabel>
             <br></br>
             {/* <Upload></Upload> */}
