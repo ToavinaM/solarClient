@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Col, Modal, Row, Form, FloatingLabel, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
+import ServiceTicket from '../Ticket/service';
+
 import './style.css';
 //date
 // import DatePicker from 'react-date-picker'
@@ -24,17 +26,25 @@ export default function ModalAddTache({ handleSave }) {
     const handleShow = () => setShow(true);
     //formulaire
     const [titre, settitre] = useState(null);
-    const [PrioriteId, setpriority] = useState(1);
-    // const [showDateAlerter, setshowDateAlerter] = useState(false);
     const [description, setdescription] = useState(null);
-    const [output, setoutput] = useState(null);
-    const [debut, setDebut] = useState(new Date());
-    const [fin, setFin] = useState(new Date());
-    const [estAlerteur, setalerteur] = useState(false);
     //data generer
     //function
     const handleSaveLocal = () => {
-        alert('test');
+        let data = {
+            "title": titre,
+            "description": description,
+            "user": {
+                "id": 2 //this is yet static
+            }
+        }
+        console.log(data);
+        ServiceTicket.saveTicket(data)
+            .then(rep => {
+                console.log('ticket save', rep);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
 

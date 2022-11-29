@@ -3,11 +3,11 @@ import { Row, Col } from 'react-bootstrap';
 
 
 import MyNavbar from '../Nav/MyNavbar';
-//redux
-import { BeatLoader, FadeLoader } from 'react-spinners';
+// import { BeatLoader, FadeLoader } from 'react-spinners';
 //service
+import ServiceTicket from '../Ticket/service';
 
-import moment from 'moment/moment';
+// import moment from 'moment/moment';
 import ModalAddTicket from '../ModalAddTicket/ModalAddTicket';
 import Ticket from '../Ticket/Ticket';
 //service
@@ -23,13 +23,26 @@ export default function Projet() {
         serviceTicket.getTicket()
             .then(rep => {
                 setticket(rep.data);
-                console.log(rep.data);
+                // console.log(rep.data);
             })
             .catch(err => {
                 console.log(err);
             })
     }, [])
+    //function
+    console.log('rep.data', tickets);
+    function handleSave(data) {
+        ServiceTicket.saveTicket(data)
+            .then(rep => {
+                console.log('new', rep);
+                console.log('old', tickets);
+                // setticket([...tickets, rep])
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
+    }
 
     return (
         <Row className='container-fluid'>
@@ -44,7 +57,7 @@ export default function Projet() {
                 <br></br>
                 <Row>
                     <div className='buttonAddTicket'>
-                        <ModalAddTicket></ModalAddTicket>
+                        <ModalAddTicket handleSave={handleSave}></ModalAddTicket>
                     </div>
                 </Row>
                 <Row>
