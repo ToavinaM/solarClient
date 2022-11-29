@@ -2,6 +2,8 @@ import React from 'react'
 import { Badge, Col, Row } from 'react-bootstrap'
 import './styles.css'
 export default function BoxReply({ toReply }) {
+
+    console.log(toReply);
     return (
         <Col md={12}>
             <h1>kjh</h1>
@@ -9,7 +11,7 @@ export default function BoxReply({ toReply }) {
                 <Row>
                     <div className="d-flex align-items-center title " style={{ color: "#8f8f8f" }}>
                         {/* <Col md={6}><h5>{toReply.title}</h5></Col> */}
-                        <Col md={6}><h5>Titre test</h5></Col>
+                        {/* <Col md={6}><h5>Titre test</h5></Col> */}
                         <Col md={6} className=" text-end p-0">
                             {/* <b>{toReply.status}</b> */}
                             <Badge>Open</Badge>

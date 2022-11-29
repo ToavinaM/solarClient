@@ -4,13 +4,9 @@ import { Button, Col, Modal, Row, Form, FloatingLabel, OverlayTrigger, Tooltip }
 import './style.css';
 //date
 // import DatePicker from 'react-date-picker'
-import Swal from 'sweetalert2';
-import useSound from 'use-sound';
-import Upload from '../Upload/Upload';
 // import create from '../sound/create.mp3';
-export default function ModalAddTache({ handleSave }) {
-    //sound
-    // const [play] = useSound(create, { volume: 1 });
+export default function ModalAddTache({ handleSave, user }) {
+    //sound;
     //modal
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -18,17 +14,21 @@ export default function ModalAddTache({ handleSave }) {
     //formulaire
     const [titre, settitre] = useState(null);
     const [description, setdescription] = useState(null);
+    const [files, setfiles] = useState([]);
     //data generer
     //function
     const handleSaveLocal = () => {
         let data = {
             "title": titre,
             "description": description,
-            "user": {
-                "id": 2 //this is yet static
+            "users": {
+                "id": user.id //this is yet static
             }
         }
-        handleSave(data);
+        console.log('debug', data);
+        let formdata = new FormData();
+        formdata.set('fileSolar', files);
+        handleSave({ data, files });
         handleClose();
     }
 
@@ -66,7 +66,9 @@ export default function ModalAddTache({ handleSave }) {
                             <Form.Control onChange={(rep) => { setdescription(rep.target.value) }} as="textarea" placeholder="Leave a comment here" style={{ height: '100px' }} />
                         </FloatingLabel>
                         <br></br>
-                        <Upload></Upload>
+                        <div className="form-group">
+                            <input onChange={(rep) => { setfiles(rep.target.files) }} type="file" multiple />
+                        </div>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>

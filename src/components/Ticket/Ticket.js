@@ -32,18 +32,12 @@ export default function Ticket({ ticket, handleUpdate, handleDelete, getTicketRe
                     </Row>
                     <Row>
                         <Col>
-                            <label>Created At</label>
+                            <label>Created At:{moment(ticket.createdAt).format(formatDate)}</label>
                             <p>{moment(ticket.createdAt).format(formatDate)}</p>
                             <label>Description</label>
                             <p>{ticket.description}</p>
                         </Col>
-                        <Col>
-                            <Row>
-                                <Col className='mb-2' sm={2}>
-                                    {/* //reply */}
-                                </Col>
-                            </Row>
-                        </Col>
+
                     </Row>
                 </div>
             </div>

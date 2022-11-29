@@ -15,30 +15,37 @@ import serviceTicket from '../Ticket/service';
 
 // import Swal from 'sweetalert2';
 import BoxReply from '../Ticket2/BoxReply';
+import { useLocation } from 'react-router-dom';
 // import Ticket2 from '../Ticket2/Ticket2';
 
 
 export default function Projet() {
-    // state
+    let { state } = useLocation();
+    // const [user, setuser] = useState(state.user);
     const [tickets, setticket] = useState([]);
     const [toReply, setToReply] = useState(null);
     //data
     const [replyTickets, setreplyTickets] = useState([]);
     //fetch
     useEffect(() => {
-        serviceTicket.getTicket()
+
+        let where = state.user.roles.id === 1 ? { idUsers: state.user.id } : [];
+        console.log(where);
+        serviceTicket.getTicket(where)
             .then(rep => {
                 setticket(rep.data);
             })
             .catch(err => {
                 console.log(err);
             })
+
     }, [])
     //function
     console.log('rep.data', tickets);
 
-    function handleSave(data) {
-        ServiceTicket.saveTicket(data)
+    function handleSave({ data, files }) {
+
+        ServiceTicket.saveTicket({ data, files })
             .then(rep => {
                 setticket([...tickets, rep.data])
             })
@@ -60,11 +67,13 @@ export default function Projet() {
     }
 
     function getTicketReply(ticketToreply) {
-        Service.getDataToReply(ticketToreply).then(rep => {
-            setToReply(ticketToreply);
-        }).catch(err => {
-            console.log('some error in getReply', err);
-        })
+        // alert('reply');
+        console.log(ticketToreply);
+        setToReply(ticketToreply);
+        // Service.getDataToReply(ticketToreply).then(rep => {
+        // }).catch(err => {
+        //     console.log('some error in getReply', err);
+        // })
     }
     return (
         <Row className='container-fluid'>
@@ -73,30 +82,27 @@ export default function Projet() {
                 <Row>
                     <MyNavbar></MyNavbar>
                 </Row>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
+                <br></br><br></br><br></br><br></br>
                 <Row>
                     <div className='buttonAddTicket'>
-                        <ModalAddTicket handleSave={handleSave} ></ModalAddTicket>
+                        <ModalAddTicket handleSave={handleSave} user={state.user}></ModalAddTicket>
                     </div>
                 </Row>
                 <Row>
                     <div className='boxTicket   ' >
-                        <Col md={12} >
-                            <Row className=" d-flex justify-content-center">
-                                {/* <Ticket2></Ticket2> */}
-                                {
-                                    tickets.map(ticket => {
-                                        return (
-                                            <Ticket getTicketReply={getTicketReply} ticket={ticket} handleDelete={handleDelete}></Ticket>
-                                        )
-                                    })
-                                }
-                            </Row>
+                        <Row>
 
-                        </Col>
+                            {/* <Ticket2></Ticket2> */}
+                            {
+                                tickets.map(ticket => {
+                                    return (
+                                        <Col md={4}>
+                                            <Ticket getTicketReply={getTicketReply} ticket={ticket} handleDelete={handleDelete}></Ticket>
+                                        </Col>
+                                    )
+                                })
+                            }
+                        </Row>
                     </div>
                 </Row>
             </Col >
