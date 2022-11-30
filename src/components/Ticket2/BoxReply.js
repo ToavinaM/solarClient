@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Badge, Col, Row } from 'react-bootstrap'
-import FileViwer from '../FileViewer.js/FileViwer';
 import ModalAddTache from '../ModalAddTicket/ModalAddTicket';
 import Reply from '../Reply/Reply';
 import Service from '../Ticket/service';
@@ -8,44 +7,56 @@ import './styles.css';
 
 import ServiceTicket from '../Ticket/service';
 
-export default function BoxReply({ toReply }) {
-    // console.log(toReply);
+export default function BoxReply({ mother, user }) {
+    // console.log(mother);
     const [reply, setreply] = useState([]);
 
 
-    function handleSave({ data, files }) {
+    // function handleSave({ data, files }) {
 
-        ServiceTicket.saveTicket({ data, files })
-            .then(rep => {
-                setreply([...reply, rep.data])
-            })
-            .catch(err => {
-                // console.log('some erro', err);
-            })
-    }
+    //     ServiceTicket.saveTicket({ data, files })
+    //         .then(rep => {
+    //             setreply([...reply, rep.data])
+    //         })
+    //         .catch(err => {
+    //             // console.log('some erro', err);
+    //         })
+    // }
 
     useEffect(() => {
-        Service.getTicket({ idMother: toReply.id })
+        // let where = state.user.roles.id === 1 ? { idUsers: state.user.id, idMother: null } : { idMother: null };
+        Service.getTicket({ idMother: mother.id })
             .then(rep => {
-
-                console.log(toReply.id);
+                console.log('=========', rep.data);
                 setreply(rep.data);
             })
             .catch(err => {
                 console.log(err);
             })
-    }, [toReply])
+    }, [mother])
 
+
+    function handleSave({ data, files }) {
+        console.log('FFFFFFFFFFF', data);
+        ServiceTicket.saveTicket({ data, files })
+            .then(rep => {
+                // console.log('KKK', rep);
+                setreply([...reply, rep.data])
+            })
+            .catch(err => {
+                console.log('some erro', err);
+            })
+    }
     return (
         <Col md={12}>
             <h1>kjh</h1>
             <div className="ticket px-4" >
                 <Row>
                     <div className="d-flex align-items-center title " style={{ color: "#8f8f8f" }}>
-                        <Col md={4}><h5>{toReply.title}</h5></Col>
-                        <Col md={4}><ModalAddTache handleSave={handleSave} ></ModalAddTache></Col>
+                        <Col md={4}><h5>{mother.title}</h5></Col>
+                        <Col md={4}><ModalAddTache handleSave={handleSave} user={user} mother={mother}></ModalAddTache></Col>
                         <Col md={4} className=" text-end p-0">
-                            {/* <b>{toReply.status}</b> */}
+                            {/* <b>{mother.status}</b> */}
                             <Badge>Open</Badge>
                         </Col>
                         {/* <Col md={6} className=" text-end p-0"><b>status</b></Col> */}
@@ -55,7 +66,7 @@ export default function BoxReply({ toReply }) {
                     {
 
                         (reply || []).map(r => {
-                            return <Reply user={toReply.users} reply={r}></Reply>
+                            return <Reply user={mother.users} reply={r}></Reply>
                         })
                     }
                 </Row>

@@ -8,6 +8,7 @@ import Radium, { StyleRoot } from 'radium';
 import UpdateCard from './ButtonModal/UpdateCard';
 import DeleteTicket from './ButtonModal/DeleteTicket';
 import ReplyButton from './ButtonModal/ReplyButton';
+import FilesTicket from './ButtonModal/FilesTicket';
 
 var moment = require('moment');
 const formatDate = "DD/MM/YYYY HH:mm";
@@ -26,6 +27,7 @@ export default function Ticket({ ticket, handleUpdate, handleDelete, selectTicke
                             <h5>{ticket.title}</h5>
                         </Col>
                         <Col sm={2} style={{ display: 'contents' }}>
+                            <FilesTicket ticket={ticket} />
                             <UpdateCard handleUpdate={handleUpdate} ticket={ticket} />
                             <DeleteTicket handleUpdate={handleUpdate} handleDelete={handleDelete} ticket={ticket} />
                             <ReplyButton selectTicket={selectTicket} ticket={ticket} />

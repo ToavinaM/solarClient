@@ -27,31 +27,28 @@ export default function Main() {
     //data
     //fetch 
     useEffect(() => {
-
         let where = state.user.roles.id === 1 ? { idUsers: state.user.id, idMother: null } : { idMother: null };
         serviceTicket.getTicket(where)
             .then(rep => {
                 setticket(rep.data);
+                console.log(rep.data);
             })
             .catch(err => {
-                // console.log(err);
+                console.log(err);
             })
 
     }, [])
     //function
-    // console.log('rep.data', tickets[0]);
-
     function handleSave({ data, files }) {
-
         ServiceTicket.saveTicket({ data, files })
             .then(rep => {
                 setticket([...tickets, rep.data])
+                console.log('asd', tickets);
             })
             .catch(err => {
-                // console.log('some erro', err);
+                console.log('some erro', err);
             })
     }
-
     function handleDelete(data) {
         // alert('active')
         ServiceTicket.deleteTicket(data)
@@ -62,6 +59,23 @@ export default function Main() {
             .catch(err => {
                 // console.log('some error delete', err);
             })
+    }
+    function selectTicket(values) {
+        setSelected(values);
+    }
+
+
+    /////////////////need to be fix
+    function handleUpdate(data) {
+        console.log('updateData', data);
+        ServiceTicket.update(data).then(newTicket => {
+            // I can revert by geting old state before changing 
+            let newArray = tickets.filter(t => t.code !== newTicket.data[0].code);
+            // setticket([]);
+            setticket([...newArray, newTicket.data[0]]);
+        }).catch(err => {
+            console.log(err);
+        })
     }
     function selectTicket(values) {
         setSelected(values);
@@ -88,7 +102,7 @@ export default function Main() {
                                 tickets.map(ticket => {
                                     return (
                                         <Col md={4}>
-                                            <Ticket selectTicket={selectTicket} ticket={ticket} handleDelete={handleDelete}></Ticket>
+                                            <Ticket selectTicket={selectTicket} ticket={ticket} handleDelete={handleDelete} handleUpdate={handleUpdate}></Ticket>
                                         </Col>
                                     )
                                 })
@@ -100,7 +114,7 @@ export default function Main() {
             <Col md={4}>
                 {
                     selected &&
-                    <BoxReply toReply={selected}></BoxReply>
+                    <BoxReply mother={selected} user={state.user}></BoxReply>
                 }
             </Col>
         </Row >

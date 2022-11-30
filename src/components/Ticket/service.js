@@ -11,7 +11,7 @@ export const Service = {
 
     saveTicket: ({ data, files }) => {
         let formData = serialize(data);
-
+        // console.log(formData);
         for (let i = 0; i < files.length; i++)
             formData.append("files", files[i]);
         return axios.post(backUrl + `/ticket`, formData);
@@ -22,6 +22,9 @@ export const Service = {
     },
     getDataToReply: (data) => {
         return axios.get(backUrl + `/ticket/${data.code}`);
+    },
+    update: (data) => {
+        return axios.put(backUrl + `/ticket/${data.code}`, data);
     }
 }
 

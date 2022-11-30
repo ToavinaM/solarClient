@@ -5,9 +5,10 @@ import './style.css';
 //date
 // import DatePicker from 'react-date-picker'
 // import create from '../sound/create.mp3';
-export default function ModalAddTache({ handleSave, user }) {
+export default function ModalAddTache({ handleSave, user, mother }) {
     //sound;
     //modal
+    // console.log('MOOOOTHER', mother);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -23,9 +24,12 @@ export default function ModalAddTache({ handleSave, user }) {
             "description": description,
             "users": {
                 "id": user.id //this is yet static
+            },
+            "mother": {
+                "id": mother !== undefined ? mother.id : null
             }
         }
-        // console.log('debug', data);
+        // console.log('SSSSASASAS', data);
         let formdata = new FormData();
         formdata.set('fileSolar', files);
         handleSave({ data, files });

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import FileViwer from '../FileViewer.js/FileViwer'
+
 import './styleReply.css';
 export default function Reply({ reply, user }) {
     let me = reply?.users?.id === user?.id;
@@ -31,7 +31,7 @@ export default function Reply({ reply, user }) {
                     <Row>
                         {
                             (reply?.files || []).map(f => {
-                                <FileViwer files={f}></FileViwer>
+                                // <FileViwer files={f}></FileViwer>
 
                             })
                         }
