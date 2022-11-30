@@ -15,7 +15,7 @@ export default function User() {
                 setadmin(rep.data[1].users);
             })
             .catch(err => {
-                // console.log('some err in user', err);
+                console.log('some err in user', err);
             })
     }, [])
     // function

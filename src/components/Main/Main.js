@@ -31,7 +31,7 @@ export default function Main() {
         serviceTicket.getTicket(where)
             .then(rep => {
                 setticket(rep.data);
-                console.log(rep.data);
+
             })
             .catch(err => {
                 console.log(err);

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
+import FileViwer from '../FileViewer/FileViwer';
 
 import './styleReply.css';
 export default function Reply({ reply, user }) {
@@ -31,7 +32,8 @@ export default function Reply({ reply, user }) {
                     <Row>
                         {
                             (reply?.files || []).map(f => {
-                                // <FileViwer files={f}></FileViwer>
+
+                                return < FileViwer files={f} ></FileViwer>
 
                             })
                         }

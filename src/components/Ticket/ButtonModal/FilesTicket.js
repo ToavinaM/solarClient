@@ -6,7 +6,6 @@ import ServiceFile from './serviceFile';
 export default function FilesTicket(ticket) {
 
 
-    console.log('getTicket', ticket);
 
     //modal
     const [show, setShow] = useState(false);
@@ -17,7 +16,7 @@ export default function FilesTicket(ticket) {
     // };
     useEffect(() => {
         ServiceFile.getFilePathById(ticket.files).then(rep => {
-            console.log(rep);
+            //console.log(rep);
         })
             .catch(err => {
                 console.log(err);

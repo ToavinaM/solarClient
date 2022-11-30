@@ -6,7 +6,7 @@ import backUrl from "../../config/Config";
 export const ServiceFile = {
     getFilePathById: (ticket) => {
         // data
-        return axios.get(backUrl + `/uploads`);
+        return axios.get(backUrl + `/file`);
     }
 }
 

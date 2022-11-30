@@ -5,6 +5,7 @@ import backUrl from "../config/Config";
 
 export const Service = {
     getUser: () => {
+        console.log(backUrl + `/role`);
         return axios.get(backUrl + `/role`);
     }
 }

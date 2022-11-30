@@ -17,7 +17,7 @@ const styles = { fadeInDown: { animation: 'x 2s', animationName: Radium.keyframe
 /////////////////////////////////////////////////////////color banier border 
 
 export default function Ticket({ ticket, handleUpdate, handleDelete, selectTicket }) {
-    let log = console.log;
+    console.log('asdasd', ticket);
     return (
         <StyleRoot>
             <div style={styles.fadeInDown} >
@@ -35,11 +35,10 @@ export default function Ticket({ ticket, handleUpdate, handleDelete, selectTicke
                     </Row>
                     <Row>
                         <Col>
-                            <b className='date'>Status : <Badge>open</Badge></b><br></br>
+                            <b className='date'>Status : <Badge variant={'variant-success'} >{ticket.status ? 'active' : 'closed'}</Badge></b><br></br>
                             <b className='date'>Created At : {moment(ticket.createdAt).format(formatDate)}</b>
                             <br></br>
                             <b>Description : {ticket.description}</b>
-                            {/* <p className='desc'>{ticket.description}</p> */}
                         </Col>
 
                     </Row>

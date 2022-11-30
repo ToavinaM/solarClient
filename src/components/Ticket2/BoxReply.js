@@ -27,7 +27,7 @@ export default function BoxReply({ mother, user }) {
         // let where = state.user.roles.id === 1 ? { idUsers: state.user.id, idMother: null } : { idMother: null };
         Service.getTicket({ idMother: mother.id })
             .then(rep => {
-                console.log('=========', rep.data);
+
                 setreply(rep.data);
             })
             .catch(err => {
@@ -63,6 +63,7 @@ export default function BoxReply({ mother, user }) {
                     </div>
                 </Row>
                 <Row className="detail">
+                    <Reply user={mother.users} reply={mother}></Reply>
                     {
 
                         (reply || []).map(r => {
