@@ -5,7 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import MyNavbar from '../Nav/MyNavbar';
 // import { BeatLoader, FadeLoader } from 'react-spinners';
 //service
-import ServiceTicket, { Service } from '../Ticket/service';
+import ServiceTicket from '../Ticket/service';
 
 // import moment from 'moment/moment';
 import ModalAddTicket from '../ModalAddTicket/ModalAddTicket';
@@ -19,16 +19,16 @@ import { useLocation } from 'react-router-dom';
 // import Ticket2 from '../Ticket2/Ticket2';
 
 
-export default function Projet() {
+export default function Main() {
     let { state } = useLocation();
     // const [user, setuser] = useState(state.user);
     const [tickets, setticket] = useState([]);
-    const [toReply, setToReply] = useState([]);
+    const [selected, setSelected] = useState(null)
     //data
-    //fetch
+    //fetch 
     useEffect(() => {
 
-        let where = state.user.roles.id === 1 ? { idUsers: state.user.id } : [];
+        let where = state.user.roles.id === 1 ? { idUsers: state.user.id, idMother: null } : { idMother: null };
         serviceTicket.getTicket(where)
             .then(rep => {
                 setticket(rep.data);
@@ -63,15 +63,8 @@ export default function Projet() {
                 // console.log('some error delete', err);
             })
     }
-
-    function getTicketReply(ticketToreply) {
-        // alert('reply');
-        // console.log(ticketToreply);
-        setToReply(ticketToreply);
-        // Service.getDataToReply(ticketToreply).then(rep => {
-        // }).catch(err => {
-        //     // console.log('some error in getReply', err);
-        // })
+    function selectTicket(values) {
+        setSelected(values);
     }
     return (
         <Row className='container-fluid'>
@@ -95,7 +88,7 @@ export default function Projet() {
                                 tickets.map(ticket => {
                                     return (
                                         <Col md={4}>
-                                            <Ticket getTicketReply={getTicketReply} ticket={ticket} handleDelete={handleDelete}></Ticket>
+                                            <Ticket selectTicket={selectTicket} ticket={ticket} handleDelete={handleDelete}></Ticket>
                                         </Col>
                                     )
                                 })
@@ -106,8 +99,8 @@ export default function Projet() {
             </Col >
             <Col md={4}>
                 {
-                    tickets.length > 0 &&
-                    <BoxReply toReply={tickets[0]}></BoxReply>
+                    selected &&
+                    <BoxReply toReply={selected}></BoxReply>
                 }
             </Col>
         </Row >

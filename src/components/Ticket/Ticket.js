@@ -15,7 +15,8 @@ const formatDate = "DD/MM/YYYY HH:mm";
 const styles = { fadeInDown: { animation: 'x 2s', animationName: Radium.keyframes(fadeInDown, '') } }
 /////////////////////////////////////////////////////////color banier border 
 
-export default function Ticket({ ticket, handleUpdate, handleDelete, getTicketReply }) {
+export default function Ticket({ ticket, handleUpdate, handleDelete, selectTicket }) {
+    let log = console.log;
     return (
         <StyleRoot>
             <div style={styles.fadeInDown} >
@@ -27,7 +28,7 @@ export default function Ticket({ ticket, handleUpdate, handleDelete, getTicketRe
                         <Col sm={2} style={{ display: 'contents' }}>
                             <UpdateCard handleUpdate={handleUpdate} ticket={ticket} />
                             <DeleteTicket handleUpdate={handleUpdate} handleDelete={handleDelete} ticket={ticket} />
-                            <ReplyButton getTicketReply={getTicketReply} ticket={ticket} />
+                            <ReplyButton selectTicket={selectTicket} ticket={ticket} />
                         </Col>
                     </Row>
                     <Row>

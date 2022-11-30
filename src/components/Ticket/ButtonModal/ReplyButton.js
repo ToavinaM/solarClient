@@ -1,15 +1,14 @@
 import React from 'react'
-import { OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 import Swal from 'sweetalert2';
 
-export default function ReplyButton({ ticket, getTicketReply }) {
-
-    function getL(ticket) {
-        getTicketReply(ticket);
+export default function ReplyButton({ selectTicket, ticket }) {
+    function setTicket() {
+        selectTicket(ticket);
     }
     return (
-        <div>
+        <div onClick={() => setTicket()}>
             <OverlayTrigger
                 key='top'
                 placement='top'
@@ -19,7 +18,9 @@ export default function ReplyButton({ ticket, getTicketReply }) {
                     </Tooltip>
                 }
             >
-                <img onClick={() => getL(ticket)} className='logos' src='../reply.png' />
+                {/* <Button variant="success" onClick={setTicket}> */}
+                <img className='logos' src='../reply.png' />
+                {/* </Button> */}
             </OverlayTrigger>
         </div>
     )
