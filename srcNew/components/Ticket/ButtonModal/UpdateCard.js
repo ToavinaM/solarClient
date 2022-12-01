@@ -15,10 +15,11 @@ export default function UpdateCard({ handleUpdate, ticket }) {
   const [code, setcode] = useState(ticket.code);
 
   const handleSaveLocal = () => {
-    // console.log('back', ticket);
+    alert('asd')
     let data = { title, description, status, code }
     handleUpdate(data);
-    handleClose();
+    setShow(false);
+
   }
 
   return (

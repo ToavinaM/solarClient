@@ -1,0 +1,35 @@
+.Main {
+    /* text-align: center; */
+}
+
+.boxTicket {
+    /* overflow: show; */
+    /* over */
+    display: contents;
+}
+
+h3 {
+    color: rgb(127, 128, 128);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.logoAdd {
+    width: 34px;
+    height: 34px;
+    /* position: absolute; */
+    /* right: 1; */
+}
+
+.logoAdd:hover {
+    cursor: pointer;
+    transform: rotate(180deg);
+    /* transform: scale(1.1, 1.1); */
+    transition-duration: 0.5s;
+    /* box-shadow: 1px 1px 1px black; */
+}
+
+.buttonAddTicket {
+    position: fixed;
+    top: 10;
+}

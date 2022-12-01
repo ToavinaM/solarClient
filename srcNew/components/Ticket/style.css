@@ -1,0 +1,30 @@
+.card {
+    /* width: 100%; */
+    height: auto;
+    background-color: white;
+    border-color: rgb(228, 225, 225);
+    border-radius: 40px 0px 40px 0px;
+    margin: auto;
+    margin-top: 23px;
+    padding: 15px;
+    box-shadow: 5px 8px 20px 3px #d8d8d8;
+    display: block;
+}
+
+.card:hover {
+    transform: scale(0.99, 0.99);
+    box-shadow: 5px 8px 20px 3px #949393;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+b,
+.desc {
+    font-size: 10px;
+}
+
+.logos {
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+}

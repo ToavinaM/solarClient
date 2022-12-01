@@ -6,7 +6,7 @@ import './styleReply.css';
 export default function Reply({ reply, user }) {
     let me = reply?.users?.id === user?.id;
     let position = me ? "end" : "";
-    console.log('MIMIMIMIMI', reply);
+
     return (
         <Row className={`d-flex justify-content-${position}`} >
             <Col md={8} className={`${me ? 'myReply' : 'hisReply'} reply`}>
@@ -19,12 +19,7 @@ export default function Reply({ reply, user }) {
                             <b className="d-flex justify-content-end">22:00</b>
                         </Col>
                         <Col md={6}>
-                            <i className="reference">#{reply?.code}</i>
-                        </Col>
-                    </Row>
-                    <Row className="text">
-                        <Col md={12}>
-                            <b>{reply?.title}</b>
+                            <i className="reference">{reply?.code}</i>
                         </Col>
                     </Row>
                     <Row className="text">
@@ -37,7 +32,9 @@ export default function Reply({ reply, user }) {
                     <Row>
                         {
                             (reply?.files || []).map(f => {
+
                                 return < FileViwer files={f} ></FileViwer>
+
                             })
                         }
                     </Row>

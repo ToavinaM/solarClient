@@ -35,7 +35,7 @@ export default function Ticket({ ticket, handleUpdate, handleDelete, selectTicke
                     </Row>
                     <Row>
                         <Col>
-                            <b className='date'>Status : <Badge bg={ticket.status ? 'primary' : 'secondary'} >{ticket.status ? 'active' : 'closed'}</Badge></b><br></br>
+                            <b className='date'>Status :<Badge bg={ticket.status ? 'primary' : 'secondary'}>{ticket.status ? 'active' : 'closed'}</Badge></b><br></br>
                             <b className='date'>Created At : {moment(ticket.createdAt).format(formatDate)}</b>
                             <br></br>
                             <b>Description : {ticket.description}</b>

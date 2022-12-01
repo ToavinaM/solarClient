@@ -1,0 +1,108 @@
+ body {
+     background-color: #f7f7f7;
+ }
+
+ .container {
+     background-color: #fff;
+ }
+
+ .ticket {
+     height: 100vh;
+     border-left: 1px solid #ececec;
+ }
+
+ .ticket .title {
+     height: 60px;
+     border-bottom: 1px solid #ececec;
+ }
+
+
+
+
+
+
+
+ .contents .titles {
+     padding-block: .5rem;
+     border-block: 1px solid #ececec;
+
+ }
+
+
+
+
+
+ .hisReply .icon {
+     background-color: #c5cfd8;
+
+ }
+
+ .ticketss:nth-child(2n) {
+     background-color: #ebebeb;
+ }
+
+ .ticketss:nth-child(2n+1) {
+     background-color: #c5cfd8;
+ }
+
+ .ticketss {
+
+     margin: 10px;
+     width: 120px;
+     height: 240px;
+
+     background-color: rgb(227, 227, 227);
+     position: relative;
+     border-inline: 3px dashed #c6c6c6;
+     border-top: 3px dashed #c6c6c6;
+     /* border-right: none; */
+     border-bottom: none;
+     overflow: hidden;
+     transition: 1s;
+ }
+
+ .listTicket {
+     background-color: rgb(227, 227, 227);
+     width: 480px;
+ }
+
+ .choose {
+     padding-block: 20px;
+     color: #8f8f8f
+ }
+
+ .ticketss .eee {
+     transform-origin: center;
+     transform: rotate(-90deg);
+     /* display: inline-block; */
+     text-align: center;
+ }
+
+ .ticketss:hover {
+     transform: rotateZ(-10deg) rotateX(7deg) scale(1.2);
+     /* transform: rotateZ(-19deg) rotateX(7deg) scale(1.2); */
+     z-index: 1000;
+     border-radius: 7px 0px 0px 19%/72px;
+     /* background-color: rgb(227, 227, 227);  */
+     box-shadow: -17px -18px 20px 1px #a4a4a4d4;
+ }
+
+ .ticketss::after {
+     content: "";
+     content: "";
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     width: 0;
+     height: 0;
+     border-bottom: 13px solid white;
+     border-left: 55px solid transparent;
+     border-right: 55px solid transparent;
+
+
+ }
+
+ .ticketss:hover .corner {
+     opacity: 1;
+
+ }

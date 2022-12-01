@@ -1,0 +1,25 @@
+.user-container {
+    border-inline: 1px solid #2f2f2f5c;
+    overflow-x: hidden;
+}
+
+.ticket-group :first-child,
+.xx {
+    position: relative;
+    background-color: #3c3c3c;
+}
+
+@media screen and (min-width: 900px) {
+
+    .ticket-group:nth-child(2n+0) {
+        float: right;
+        padding-left: 5px;
+
+    }
+
+    .ticket-group:nth-child(2n+1) {
+        padding-right: 5px;
+        float: left;
+    }
+
+}

@@ -1,0 +1,12 @@
+.profile {
+    height: 120px;
+    width: 120px;
+    border-radius: 100%;
+    background-color: #3c3c3c;
+    margin: 0 auto;
+    border: 4px dotted #7777772b;
+    border-top-width: 6px;
+    border-left-width: 5px;
+    border-bottom-width: 4px;
+    border-left-style: dashed;
+}

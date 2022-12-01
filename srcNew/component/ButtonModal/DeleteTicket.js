@@ -7,6 +7,7 @@ export default function DeleteTicket({ ticket, handleDelete }) {
 
 
   const handleDeleteL = () => {
+    // alert('asd')
     Swal.fire({
       toast: true,
       // timer: 4000,
@@ -26,14 +27,14 @@ export default function DeleteTicket({ ticket, handleDelete }) {
           icon: 'success',
         }
         ).then(() => {
-          handleDelete(ticket)
         })
       }
+      handleDelete(ticket)
     })
   }
 
   return (
-    <div>
+    <div onClick={handleDeleteL} >
       <OverlayTrigger
         key='top'
         placement='top'
@@ -43,7 +44,7 @@ export default function DeleteTicket({ ticket, handleDelete }) {
           </Tooltip>
         }
       >
-        <img onClick={handleDeleteL} className='logos' src='../delete.png' />
+        <img className='logos' src='../delete.png' />
       </OverlayTrigger>
     </div>
   )

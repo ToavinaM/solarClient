@@ -1,0 +1,26 @@
+.ticket-bg {
+    background-position: center;
+    background-size: 100%;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 100;
+    opacity: .1;
+}
+
+.date,
+.description,
+.code {
+    font-size: 13px;
+}
+
+.code {
+    color: #198754;
+}
+
+.header,
+.description {
+    border-bottom: 1px solid #ececec;
+}

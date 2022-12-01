@@ -57,7 +57,7 @@ export default function BoxReply({ mother, user }) {
                         <Col md={4}><ModalAddTache handleSave={handleSave} user={user} mother={mother}></ModalAddTache></Col>
                         <Col md={4} className=" text-end p-0">
                             {/* <b>{mother.status}</b> */}
-                            <Badge bg={mother.status ? 'primary' : 'secondary'}>{mother.status ? 'active' : 'closed'}</Badge>
+                            <Badge>Open</Badge>
                         </Col>
                         {/* <Col md={6} className=" text-end p-0"><b>status</b></Col> */}
                     </div>

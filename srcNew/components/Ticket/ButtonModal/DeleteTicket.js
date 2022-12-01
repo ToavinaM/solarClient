@@ -26,9 +26,9 @@ export default function DeleteTicket({ ticket, handleDelete }) {
           icon: 'success',
         }
         ).then(() => {
-          handleDelete(ticket)
         })
       }
+      handleDelete(ticket)
     })
   }
 

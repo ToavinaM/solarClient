@@ -1,0 +1,59 @@
+ /* .contents .userName {
+     font-size: 13px;
+
+ }
+ */
+ .contents .text {
+     font-size: 12px;
+     padding-block: .5rem;
+ }
+
+ .reply {
+     padding-inline: 1rem;
+     margin-bottom: 1rem;
+ }
+
+ .file {
+     font-size: 13px;
+ }
+
+ .myReply,
+ .hisReply {
+
+     padding: 10px 0;
+ }
+
+ .myReply {
+     /* text-align: end; */
+ }
+
+ .myReply .contents {
+     background-color: #dedede;
+     border-radius: 0px 10px 0px 10px;
+ }
+
+ .hisReply {
+     text-align: left;
+ }
+
+ .hisReply .contents {
+     background-color: #c5cfd8;
+     border-radius: 10px 0px 10px 0px;
+ }
+
+ .contents .date {
+     color: grey;
+     font-size: 13px;
+     text-align: end;
+ }
+
+ .reference {
+     color: red;
+     font-size: 10px;
+ }
+
+
+
+ .titles {
+     line-height: 14px;
+ }

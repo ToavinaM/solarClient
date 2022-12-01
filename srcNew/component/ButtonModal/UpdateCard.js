@@ -18,7 +18,6 @@ export default function UpdateCard({ handleUpdate, ticket }) {
     // console.log('back', ticket);
     let data = { title, description, status, code }
     handleUpdate(data);
-    handleClose();
   }
 
   return (
